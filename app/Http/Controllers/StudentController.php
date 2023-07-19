@@ -16,13 +16,13 @@ class StudentController extends Controller
 {
     public function dashboard()
     {
-        return view('student.dashboard');
+        return view('Student.dashboard');
     }
 
     public function latihan()
     {
         $latihan = latihan::get();
-        return view('student.exercise.index', compact('latihan'));
+        return view('Student.exercise.index', compact('latihan'));
     }
 
     public function soalLatihan(Request $request, $id)
@@ -37,7 +37,7 @@ class StudentController extends Controller
             ->select('soal.id', 'soal.no', 'soal.judul', 'soal.jenis', 'soal.deskripsi', 'soal_latihan.latihan_id', 'soal_latihan.id')
             ->get();
         // dd($soal_latihan);
-        return view('student.SoalLatihan.index', compact('soal_latihan'));
+        return view('Student.SoalLatihan.index', compact('soal_latihan'));
     }
     public function soal($id, Request $request)
     {
@@ -75,13 +75,13 @@ class StudentController extends Controller
             ->select('soal.id', 'soal.soal', 'soal_latihan.no', 'soal.judul', 'soal_latihan.latihan_id')
             ->get();
         $jumlah_soal = soal_latihan::where('latihan_id', '=', $id)->get()->count();
-        return view('student.Soal.index', compact('soal', 'id_soal', 'jumlah_soal'));
+        return view('Student.Soal.index', compact('soal', 'id_soal', 'jumlah_soal'));
         // dd($soal);
     }
     public function hasil()
     {
         $latihan = latihan::get();
-        return view('student.result.index', compact('latihan'));
+        return view('Student.result.index', compact('latihan'));
     }
 
     public function hasilLatihan(Request $request)
@@ -96,7 +96,7 @@ class StudentController extends Controller
 
         $question = DB::table('soal_latihan')->where('latihan_id', $latihan_id)->get()->count();
         $result = floor(($passed / $question) * 100);
-        return view('student.result.resultByExercise', compact('latihan_id', 'passed', 'question', 'result'));
+        return view('Student.result.resultByExercise', compact('latihan_id', 'passed', 'question', 'result'));
     }
 
     public function getResultByExerciseDataTable(Request $request)
