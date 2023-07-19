@@ -1,4 +1,4 @@
-@extends('student.master')
+@extends('Student.master')
 @section('title')
     iCLOP | Daftar Nilai
 @endsection

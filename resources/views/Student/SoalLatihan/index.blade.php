@@ -1,4 +1,4 @@
-@extends('student.master') @section('title')
+@extends('Student.master') @section('title')
 iCLOP | Daftar Soal
 @endsection
 @section('content-header')
